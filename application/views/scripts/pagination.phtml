@@ -1,0 +1,42 @@
+ <!--<nav>
+    <ul class="pager">
+      <li><a href="#">Anterior</a></li>
+      <li><a href="#"><?php echo "Próximo";?></a></li>
+    </ul>
+  </nav>-->
+<?php if ($this->pageCount): ?>
+<div class="paginationControl">
+    <!-- First page link --> 
+    <?php if (isset($this->previous)): ?>
+        <a href="<?php echo $_SERVER['REQUEST_URI']."?result&page=".$this->first; ?>"> Primeira </a> | 
+    <?php else: ?> 
+        <span class="disabled"> Primeira</span> | 
+    <?php endif; ?>
+    <!-- Previous page link --> 
+    <?php if (isset($this->previous)): ?>
+        <a href="<?php echo $_SERVER['REQUEST_URI']."?result&page=".$this->previous; ?>"><i class="glyphicon glyphicon-arrow-left"></i></a> | 
+    <?php else: ?> 
+        <span class="disabled"><i class="glyphicon glyphicon-arrow-left"></i></span> | 
+    <?php endif; ?>
+    <!-- Current page link --> 
+        <span class="disabled"><?php echo $this->firstItemNumber; ?></span> | 
+    <!-- Next page link --> 
+    <?php if (isset($this->next)): ?>
+        <a href="<?php echo $_SERVER['REQUEST_URI']."?result&page=".$this->next; ?>"><i class="glyphicon glyphicon-arrow-right"></i></a> | 
+    <?php else: ?>
+        <span class="disabled"><i class="glyphicon glyphicon-arrow-right"></i></span> | 
+    <?php endif; ?>
+    <!-- Last page link --> 
+    <?php if (isset($this->next)): ?>
+        <a href="<?php echo $_SERVER['REQUEST_URI']."?result&page=".$this->last; ?>"> <?php echo "Última";?> </a> 
+    <?php else: ?> 
+        <span class="disabled"><?php echo "Última";?></span> <?php endif; ?>
+</div>
+<?php endif; ?>
+
+<script type="text/javascript">
+
+$('#paginationControl').bind('change', function() {
+	 window.location = this.options[this.selectedIndex].value;
+});
+</script>
